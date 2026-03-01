@@ -107,113 +107,60 @@
         }
 
         .hero-tagline {
-            font-size: 0.9rem;
-            color: #555;
-            letter-spacing: 12px;
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 50px;
             animation: fadeInUp 0.8s ease-out 0.2s both;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
             animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
-        .coffee-btn {
+        .hero-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 50px;
-            min-width: 200px;
+            padding: 16px 40px;
+            min-width: 180px;
             font-family: 'Open Sans', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
             border-radius: 50px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            gap: 8px;
         }
 
-        /* Efecto glass shimmer animado siempre visible */
-        @keyframes shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
+        .hero-btn-primary {
+            background: var(--gold);
+            color: #000;
+            border: 1px solid var(--gold);
         }
 
-        /* Cafe Black - Negro con dorado (paquete real) */
-        .coffee-btn.black {
-            background: linear-gradient(90deg, 
-                rgba(15, 15, 15, 0.95) 0%, 
-                rgba(25, 25, 25, 0.9) 50%, 
-                rgba(15, 15, 15, 0.95) 100%);
-            background-size: 200% 100%;
-            color: #d4af37;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 
-                        inset 0 1px 0 rgba(212, 175, 55, 0.2),
-                        inset 0 -1px 0 rgba(212, 175, 55, 0.1);
-            animation: shimmer 4s ease-in-out infinite;
-        }
-
-        .coffee-btn.black:hover {
-            animation: none;
+        .hero-btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 
-                        inset 0 1px 0 rgba(212, 175, 55, 0.3);
-            border-color: rgba(212, 175, 55, 0.7);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
 
-        /* Cafe Latte - Marrón/chocolate con dorado (paquete real) */
-        .coffee-btn.latte {
-            background: linear-gradient(90deg, 
-                rgba(70, 45, 30, 0.95) 0%, 
-                rgba(90, 60, 40, 0.9) 50%, 
-                rgba(70, 45, 30, 0.95) 100%);
-            background-size: 200% 100%;
-            color: #f5e6d3;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 4px 30px rgba(90, 50, 30, 0.4), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.15),
-                        inset 0 -1px 0 rgba(212, 175, 55, 0.2);
-            animation: shimmer 4s ease-in-out infinite;
+        .hero-btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #fff;
+            border: 1px solid #25D366;
         }
 
-        .coffee-btn.latte:hover {
-            animation: none;
+        .hero-btn-whatsapp:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(90, 50, 30, 0.5), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            border-color: rgba(212, 175, 55, 0.7);
-        }
-
-        /* Gourmet Supreme - Plata/gris con dorado (paquete real) */
-        .coffee-btn.gourmet {
-            background: linear-gradient(90deg, 
-                rgba(140, 140, 145, 0.95) 0%, 
-                rgba(170, 170, 175, 0.9) 50%, 
-                rgba(140, 140, 145, 0.95) 100%);
-            background-size: 200% 100%;
-            color: #1a1a1a;
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            box-shadow: 0 4px 30px rgba(150, 150, 155, 0.3), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                        inset 0 -1px 0 rgba(212, 175, 55, 0.2);
-            animation: shimmer 4s ease-in-out infinite;
-        }
-
-        .coffee-btn.gourmet:hover {
-            animation: none;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(150, 150, 155, 0.4), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            border-color: rgba(212, 175, 55, 0.8);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
         }
 
         @keyframes fadeInUp {
@@ -329,6 +276,150 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        /* Productos Section */
+        .productos {
+            padding: 80px 20px;
+            background: var(--dark);
+            min-height: 50vh;
+        }
+
+        .productos-titulo {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: var(--gold);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .producto-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .producto-card.agotado {
+            opacity: 0.6;
+        }
+
+        .producto-imagen {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #222;
+        }
+
+        .producto-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            text-align: center;
+        }
+
+        .producto-nombre {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .producto-precio {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .producto-disponibles {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .producto-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .producto-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .producto-agotado-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #333;
+            color: #888;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            margin-top: auto;
+        }
+
+        .disponibles-mensaje {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+
+        .disponibles-mensaje i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .disponibles-mensaje-leyenda {
+            font-size: 1.2rem;
+            color: #fff;
+            display: block;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .disponibles-mensaje p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
     </style>
 </head>
 <body>
@@ -339,14 +430,22 @@
                 <img src="img/organogold.svg" alt="OrganoGold">
             </div>
             <h1>ORGANO GOLD</h1>
-            <p class="hero-tagline">Muy pronto</p>
+            <p class="hero-tagline">El mejor café del mundo, ahora en tu hogar</p>
             
             <div class="hero-buttons">
-                <span class="coffee-btn black">Café Black</span>
-                <span class="coffee-btn latte">Café Latte</span>
-                <span class="coffee-btn gourmet">Gourmet Supreme</span>
+                <a href="#productos" class="hero-btn hero-btn-primary">Entrar</a>
+                <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20caf%C3%A9s" target="_blank" class="hero-btn hero-btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Contactar
+                </a>
             </div>
         </div>
+    </section>
+
+    <!-- Productos Section -->
+    <section class="productos" id="productos">
+        <h2 class="productos-titulo">NUESTROS CAFÉS</h2>
+        <div id="productosGrid" class="productos-grid"></div>
     </section>
 
     <!-- Footer -->
@@ -371,5 +470,7 @@
             </a>
         </div>
     </footer>
+
+    <script src="productos/productos.js"></script>
 </body>
 </html>
