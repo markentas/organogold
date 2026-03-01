@@ -7,6 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="img/organogold.svg">
     <link rel="apple-touch-icon" href="img/organogold.svg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -325,7 +326,7 @@
 
         .producto-imagen {
             width: 100%;
-            height: 200px;
+            height: 350px;
             object-fit: cover;
             background: #222;
         }
@@ -420,6 +421,137 @@
             margin-bottom: 25px;
             line-height: 1.8;
         }
+
+        /* Slider Section - Swiper */
+        .slider-section {
+            background: linear-gradient(180deg, var(--dark) 0%, #1a1512 50%, var(--dark) 100%);
+            padding: 40px 15px;
+            position: relative;
+        }
+
+        .slider-section::before,
+        .slider-section::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 80px;
+            pointer-events: none;
+        }
+
+        .slider-section::before {
+            top: 0;
+            background: linear-gradient(to bottom, var(--dark), transparent);
+        }
+
+        .slider-section::after {
+            bottom: 0;
+            background: linear-gradient(to top, var(--dark), transparent);
+        }
+
+        .swiper {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .swiper-slide {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 10px;
+        }
+
+        .swiper-slide img {
+            flex: 1 1 350px;
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .slider-caption {
+            flex: 1 1 280px;
+            max-width: 400px;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slider-caption-titulo {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .slider-caption-cantidad {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .slider-caption-desc {
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* Swiper Navigation & Pagination */
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.15);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .swiper-button-prev:after,
+        .swiper-button-next:after {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .swiper-pagination-bullet {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid transparent;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--gold);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: scale(1.2);
+        }
+
+        .swiper-pagination {
+            position: relative;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -448,6 +580,18 @@
         <div id="productosGrid" class="productos-grid"></div>
     </section>
 
+    <!-- Slider Section -->
+    <section class="slider-section" id="galeria">
+        <h2 class="productos-titulo">NUESTROS CAFÉS</h2>
+        
+        <div class="swiper">
+            <div class="swiper-wrapper" id="swiperWrapper"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-logo">ORGANO GOLD</div>
@@ -472,5 +616,79 @@
     </footer>
 
     <script src="productos/productos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const sliderData = [
+            {
+                img: 'productos/img/og-black.jpg',
+                titulo: 'Gourmet Café Negro',
+                cantidad: '30 sobres por caja',
+                descripcion: 'Experimente en un instante el aroma del café recién hecho con el Café Negro Gourmet de ORGANO. Los expertos apreciarán su sabor robusto y suave, enriquecido con rico Ganoderma lucidum. Despierte sus sentidos y enriquezca su día con una clásica taza de café tan sabrosa como estimulante.'
+            },
+            {
+                img: 'productos/img/og-latte.jpg',
+                titulo: 'Gourmet Café Latte',
+                cantidad: '20 sobres por caja',
+                descripcion: 'Disfrute en un instante de un delicioso latte al alcance de su mano con el Café Latte Gourmet de ORGANO. Nuestros delicados granos de café Arábica de gran calidad y el Ganoderma se mezclan con crema y azúcar para conseguir un latte ligero y cremoso, ¡y sin tener que esperar en fila para conseguirlo! Sabroso, rápido y deliciosamente revitalizante.'
+            },
+            {
+                img: 'productos/img/og-supreme.webp',
+                titulo: 'ORGANO Gourmet Café Supreme',
+                cantidad: '20 sobres por caja',
+                descripcion: 'ORGANO Gourmet Café Supreme es una mezcla suave y ligera de café, con un sabor cremoso y un toque dulce. Notas sutiles de canela y chocolate, creadas por el método seguido en el tostado, hacen que esta mezcla sea ideal para cargarse de energía por la mañana o a mediodía.'
+            },
+            {
+                img: 'productos/img/og-mocha.jpg',
+                titulo: 'Gourmet Café Mocha',
+                cantidad: '15 sobres por caja',
+                descripcion: 'La exquisitez y la delicia van de la mano en esta lujosa bebida. Una mezcla de nuestro café de gran calidad con el cacao más delicado y nuestro famoso Ganoderma, el Café Mocha Gourmet de ORGANO le ofrece el rico sabor con un toque de cacao que esperaría de un mocha. Perfecto tras la cena o para darse un lujo a media tarde.'
+            },
+            {
+                img: 'productos/img/og-cocoa.jpg',
+                titulo: 'Gourmet Cocoa Caliente',
+                cantidad: '15 sobres por caja',
+                descripcion: 'Experimente el lujo de nuestro increíblemente conocido chocolate caliente: su gran sabor también está infusionado con nuestro exclusivo Ganoderma lucidum. Su confort, calor y una textura suave como la seda hacen que ésta resulte una taza llena de felicidad para toda la familia.'
+            }
+        ];
+
+        function initSlider() {
+            const wrapper = document.getElementById('swiperWrapper');
+
+            sliderData.forEach((slide) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'swiper-slide';
+                slideDiv.innerHTML = `
+                    <img src="${slide.img}" alt="${slide.titulo}">
+                    <div class="slider-caption">
+                        <h3 class="slider-caption-titulo">${slide.titulo}</h3>
+                        <p class="slider-caption-cantidad">${slide.cantidad}</p>
+                        <p class="slider-caption-desc">${slide.descripcion}</p>
+                    </div>
+                `;
+                wrapper.appendChild(slideDiv);
+            });
+
+            const swiper = new Swiper('.swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                spaceBetween: 30,
+                grabCursor: true
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initSlider);
+    </script>
 </body>
 </html>
