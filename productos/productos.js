@@ -1,5 +1,4 @@
-const PRODUCTOS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTcruLY7QkYt0oByvSQqsUlw2LkTYtLSAWATmCZeUjqWkAMB0Ngr7EZyySmJ9akJbB38REa5sHDkNYt/pub?output=csv';
-
+const PRODUCTOS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRwK7lphThsdDj4LSo-YsCh8vv9UPKQj8Xk85ppsPSpWnfWb0pHWH1XFQve4dbp_mjpolLuxqL0q9wi/pub?output=csv';
 function renderizarProductos(productos) {
     const grid = document.getElementById('productosGrid');
     
