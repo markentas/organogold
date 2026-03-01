@@ -552,6 +552,64 @@
             position: relative;
             margin-top: 20px;
         }
+
+        /* Fixed Buttons */
+        .fixed-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-buttons.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fixed-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .fixed-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .fixed-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #fff;
+            border: 2px solid #25D366;
+        }
+
+        .fixed-whatsapp:hover {
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .fixed-backtop {
+            background: rgba(212, 175, 55, 0.9);
+            color: #000;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+        }
+
+        .fixed-backtop:hover {
+            background: var(--gold);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -614,6 +672,16 @@
             </a>
         </div>
     </footer>
+
+    <!-- Fixed Buttons -->
+    <div class="fixed-buttons" id="fixedButtons">
+        <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20caf%C3%A9s" target="_blank" class="fixed-btn fixed-whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="fixed-btn fixed-backtop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
 
     <script src="productos/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -689,6 +757,27 @@
         }
 
         document.addEventListener('DOMContentLoaded', initSlider);
+
+        // Fixed buttons visibility
+        const fixedButtons = document.getElementById('fixedButtons');
+        const sliderSection = document.getElementById('galeria');
+
+        function handleFixedButtons() {
+            if (!sliderSection || !fixedButtons) return;
+            
+            const sliderRect = sliderSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Show buttons when slider section is visible or passed
+            if (sliderRect.top <= windowHeight / 2) {
+                fixedButtons.classList.add('visible');
+            } else {
+                fixedButtons.classList.remove('visible');
+            }
+        }
+
+        window.addEventListener('scroll', handleFixedButtons);
+        handleFixedButtons(); // Check on load
     </script>
 </body>
 </html>
